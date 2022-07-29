@@ -1,0 +1,58 @@
+{% extends 'home.html' %}
+{% block content %}
+<title>{% block title %} 
+    Show
+{% endblock title %}</title>
+<h2 style="text-align:center;">Student Details</h2>
+{% if messages %}
+{% for message in messages %}
+<div class="container" style="margin-top:10px;">
+    <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+{% endfor %}
+{% endif %}
+<h3 style="padding:10px"><i style="font-size:24px" class='fas fa-user-alt'></i> {{userdetail.fname}} {{userdetail.lname}}</h3>
+
+<hr>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Sid</th>
+            <th>Usename</th>
+            <th>FirstName</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Pass1</th>
+            <th>Pass2</th>
+            <th>Action</th>
+        </tr>
+
+    </thead>
+    {% for s in student %}
+    <tr>
+    <th>{{s.sid}}</th>
+    <td>{{s.username}}</td>
+    <td>{{s.fname}}</td>
+    <td>{{s.lname}}</td>
+    <td>{{s.email}}</td>
+    <td>{{s.pass1}}</td>
+    <td>{{s.pass2}}</td>
+    <td>
+        <a href="edit/{{s.sid}}" class="btn btn-sm btn-info">Edit</a>
+        <a href="delete/{{s.sid}}" class="btn btn-sm btn-danger">Delete</a>
+        
+    </td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+<button type="button" class="btn btn-default btn-sm">
+    <span class="glyphicon glyphicon-log-out"></span>
+    <a href="/logout"> Log out</a>
+  </button>
+
+
+{% endblock content %}

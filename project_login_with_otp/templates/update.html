@@ -1,0 +1,36 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        {% block content %}
+        <h3>Update</h3>
+            <form action="{% url 'update' %}" method="POST" enctype='multipart/form-data'>
+                {% csrf_token %}
+            <!-- <label for="">Sid</label> -->
+            <input type="hidden" id="sid" name="sid" value="{{student.sid}}" placeholder="Create ID (only numbers)" required>
+        </br>
+            <label for="">Username</label>
+            <input type="text" id="username" name="username" value="{{student.username}}" placeholder="Create a username (only letters and numbers)" required>
+            </br>
+            <label for="">Firstname</label>
+            <input type="text" id="fname" name="fname" value="{{student.fname}}" placeholder="Enter Your First Name" required>
+            </br>
+            <label for="">Lastname</label>
+            <input type="text" id="lname" name="lname" value="{{student.lname}}" placeholder="Enter Your Last Name" required>
+            </br>          
+            <label for="">Email</label>
+            <input type="text" id="email" name="email" value="{{student.email}}" placeholder="Enter Your Email Address" required>
+            </br>
+            <label for="">Password</label>
+            <input type="password" id="pass1" name="pass1" value="{{student.pass1}}" placeholder="Creat A Password" required>
+            </br>
+            <label for="">Connfirm your password</label>
+            <input type="password" id="pass2" name="pass2" value="{{student.pass2}}" placeholder="Confirm Your Password" required>
+            </br>
+            <button type="submit">Update</button>
+                       
+        </form>
+        {% endblock content %}
+    </body>
+</html>

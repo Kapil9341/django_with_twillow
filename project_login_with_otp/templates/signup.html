@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+        <title>{% block title %} 
+            Signup
+        {% endblock title %}</title>
+    </head>
+    <body>
+        {% block content %}
+        <h3>SignUp</h3>
+        <form action="{% url 'store' %}" method="POST" enctype='multipart/form-data'>
+            {% csrf_token %}
+            
+            <label for="">Sid</label>
+            <input type="text" id="sid" name="sid" placeholder="Create a student id (only numbers)">
+            </br>
+            <label for="">Username</label>
+            <input type="text" id="username" name="username" placeholder="Create a username (only letters and numbers)" required>
+            </br>
+            <label for="">Firstname</label>
+            <input type="text" id="fname" name="fname" placeholder="Enter Your First Name" required>
+            </br>
+            <label for="">Lastname</label>
+            <input type="text" id="lname" name="lname" placeholder="Enter Your Last Name" required>
+            </br>          
+            <label for="">Email</label>
+            <input type="text" id="email" name="email" placeholder="Enter Your Email Address" required>
+            </br>
+            <label for="">Password</label>
+            <input type="password" id="pass1" name="pass1" placeholder="Creat A Password" required>
+            </br>
+            <label for="">Connfirm your password</label>
+            <input type="password" name="pass2" autocomplete="current-password" required="" id="id_password">
+            <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer;"></i>
+           {# <!-- <input type="password" id="pass2" name="pass2" placeholder="Confirm Your Password" required> -->#}
+
+{# script for password show/hide #}
+           <script>
+            const togglePassword = document.querySelector('#togglePassword');
+          const password = document.querySelector('#id_password');
+         
+          togglePassword.addEventListener('click', function (e) {
+            // toggle the type attribute
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            // toggle the eye slash icon
+            this.classList.toggle('fa-eye-slash');
+        });
+        </script>
+            </br>
+            <button type="submit">Sign Up</button>
+
+            <button type="submit"><a href="/show">Show</a></button>
+            <button type="submit"><a href="/login">Login</a></button>
+                       
+        </form>
+        {% endblock content %}
+    </body>
+</html>
